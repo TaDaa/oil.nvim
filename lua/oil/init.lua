@@ -706,9 +706,8 @@ M.select = function(opts, callback)
       end
     else
       -- Close floating window before opening a file
-      if vim.w.is_oil_win then
-        vim.api.nvim_win_close(0, false)
-      end
+      -- Change below fixes float opening buffer in wrong window
+      M.close()
     end
 
     -- Normalize the url before opening to prevent needing to rename them inside the BufReadCmd
